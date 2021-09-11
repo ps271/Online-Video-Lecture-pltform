@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} Your Courses {% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0 d-flex flex-row" method="GET" action="{% url 'courses:search-list' %}">
+                <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}" required>
+                <button class="btn btn-outline-primary" type="submit"><ion-icon name="search-outline"></ion-icon></button>
+            </form>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="create-video">Create Video</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'courses:user-uploads' user.username %}">Your Videos</a>
+            </li>
+            
+            </ul>
+            <ul class="nav-item">               
+                <a class="nav-link active" aria-current="page" href="/logout">Log-Out</a>
+            </ul>
+            
+        </div>
+    </div>
+</nav>
+
+    <h1>Courses For You To Learn</h1>
+
+    <div class="container">
+		<div class="row justify-content-center">
+			{% for object in object_list %}
+			<div class="card col-md-3 col-sm-12 mr-md-2 mt-5 p-3 border-0">
+				<a href="{% url 'courses:video-detail' object.pk %}"><img src="/media/{{ object.thumbnail }}" width="256" height="144"></a>
+				<div class="card-body">
+					<a class="link-text" href="{% url 'courses:video-detail' object.pk %}"><h5 class="text-center">{{ object.caption }}</h5></a>
+					<p class="text-muted text-center m-0">{{ object.uploader }}</p>
+					<p class="text-muted text-center">{{ object.date_time | date:"M d, Y" }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

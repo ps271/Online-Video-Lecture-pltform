@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                
+                </ul>
+                <ul class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/logout">Log-Out</a>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 my-3">
+                <h2>{{ category.name }} Videos</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            {% for video in videos %}
+            <div class="card col-md-3 col-sm-12 mr-md-2 mt-5 p-3 border-0">
+                <a href="{% url 'courses:video-detail' video.pk %}"><img src="/media/{{ video.thumbnail }}" width="256" height="144"></a>
+                <div class="card-body">
+                    <a class="link-text" href="{% url 'courses:video-detail' video.pk %}"><h5 class="text-center">{{ video.caption }}</h5></a>
+                    <p class="text-muted text-center m-0">{{ video.uploader }}</p>
+                    <p class="text-muted text-center">{{ video.date_time | date:"M d, Y" }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
