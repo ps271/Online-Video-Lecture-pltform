@@ -1,0 +1,75 @@
+.box {
+    display: block;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.edit {
+    position: relative;
+    display: inline;
+}
+
+.delete {
+    position: relative;
+    display: inline;
+}
+
+.video-icons {
+    font-size: 1.8rem;
+    transition: 0.3s;
+}
+
+.video-icons:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.icon-color {
+    color: #777;
+    transition: 0.3s;
+}
+
+.icon-color:hover {
+    color: #777;
+    opacity: 0.8;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.video-uploader {
+    color: #333;
+    font-weight: 800;
+    transition: 0.3s;
+}
+
+.video-uploader:hover {
+    color: #000;
+    font-weight: 800;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+
+}
+
+.link-text {
+    color: #333;
+    transition: .3s;
+
+}
+
+.link-text:hover {
+    color: #555;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.category-link {
+    transition: 0.3s;
+}
+
+.category-link:hover {
+    transition: 0.3s;
+    text-decoration: none;
+}
+
