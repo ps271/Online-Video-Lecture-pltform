@@ -15,7 +15,7 @@ import json
 class Index(LoginRequiredMixin, ListView):
 	model = Video
 	template_name = 'courses/index.html'
-	order_by = '-date_posted'
+	order_by = '-date_time'
 
 class UserUploads(LoginRequiredMixin, ListView):
     model = Video
@@ -132,7 +132,7 @@ class VideoSearch(View):
         return render(request, "courses/video_search.html", context)
 
 class Like(View):
-    template_name = "detail_video.html"
+    template_name = "courses/detail_video.html"
     def post(self, request, *args, **kwargs):
         if request.POST.get('action') == 'post' and request.is_ajax():
             result = ''
